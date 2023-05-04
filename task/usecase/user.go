@@ -7,14 +7,14 @@ import (
 	"task/models"
 )
 
-func CreateUser(user *models.User) error {
+func CreateMember(member *models.Member) error {
 	// check name cannot be empty
-	if user.Name == "" {
+	if member.Name == "" {
 		return errors.New("user name cannot be empty")
 	}
 
 	//check email
-	if user.Email == "" {
+	if member.Email == "" {
 		return errors.New("user Email cannot be empty")
 	}
 
@@ -26,8 +26,7 @@ func CreateUser(user *models.User) error {
 }
 
 func GetUser(id uint) (user models.User, err error) {
-	user.ID = id
-	err = database.GetUser(&user)
+	user, err = database.GetUser(id)
 	if err != nil {
 		fmt.Println("Error getting user from database")
 		return
@@ -62,22 +61,5 @@ func DeleteUser(id uint) (err error) {
 		return
 	}
 
-	return
-}
-
-func LoginUser(user *models.User) (token string, err error) {
-	//check to DB email and Password
-	err = database.GetUser(user)
-	if err != nil {
-		fmt.Println("Error getting user from database")
-		return
-	}
-
-	//Generate Jwt
-
-	if err != nil {
-		fmt.Println("Error generate token")
-		return
-	}
 	return
 }
