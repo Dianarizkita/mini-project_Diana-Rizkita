@@ -29,5 +29,13 @@ func New() *echo.Echo {
 	book.PUT(":id", controllers.UpdateBookController)
 	book.DELETE(":id", controllers.DeleteBookController)
 
+	//route book details
+	book_details := e.Group("/book_details")
+	book_details.GET("", controllers.GetBookDetailsControllers)
+	book_details.POST("", controllers.CreateBookDetailsController)
+	book_details.GET(":id", controllers.GetBookDetailsController)
+	book_details.PUT(":id", controllers.UpdateBookDetailsController)
+	book_details.DELETE(":id", controllers.DeleteBookDetailsController)
+
 	return e
 }
