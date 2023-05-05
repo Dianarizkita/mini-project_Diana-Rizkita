@@ -123,6 +123,122 @@
 			]
 		},
 		{
+			"name": "Book_Details",
+			"item": [
+				{
+					"name": "Get Book Details By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/book_details/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"book_details",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Book Details",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"book_id\": 4,\r\n    \"book_code\": \"403\",\r\n    \"status\": \"tersedia\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/book_details",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"book_details"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Book Details By id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"book_id\": 1,\r\n    \"book_code\": \"101\",\r\n    \"status\": \"tersedia\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/book_details/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"book_details",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Book Details",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/books/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"books",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Book Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/book_details",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"book_details"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Add Book",
 			"request": {
 				"method": "GET",
