@@ -7,14 +7,14 @@ import (
 	"task/models"
 )
 
-func CreateMember(member *models.Member) error {
+func CreateUser(user *models.User) error {
 	// check name cannot be empty
-	if member.Name == "" {
+	if user.Name == "" {
 		return errors.New("user name cannot be empty")
 	}
 
 	//check email
-	if member.Email == "" {
+	if user.Email == "" {
 		return errors.New("user Email cannot be empty")
 	}
 
