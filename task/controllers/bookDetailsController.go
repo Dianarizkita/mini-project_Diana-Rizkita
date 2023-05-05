@@ -47,8 +47,8 @@ func CreateBookDetailsController(c echo.Context) error {
 	}
 
 	return c.JSON(http.StatusOK, map[string]interface{}{
-		"message": "success Create New books",
-		"books":   book_details,
+		"message":      "success Create New books",
+		"book_details": book_details,
 	})
 }
 
