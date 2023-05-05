@@ -15,7 +15,7 @@ func CreateUser(user *models.User) error {
 func GetUsers() (interface{}, error) {
 	var users []models.User
 
-	if err := config.DB.Model(&models.User{}).Preload("Blogs").Find(&users).Error; err != nil {
+	if err := config.DB.Find(&users).Error; err != nil {
 		return nil, err
 	}
 	return users, nil
@@ -23,7 +23,7 @@ func GetUsers() (interface{}, error) {
 
 func GetUser(id uint) (user models.User, err error) {
 	user.ID = id
-	if err = config.DB.Model(&models.User{}).Preload("Blogs").First(&user).Error; err != nil {
+	if err = config.DB.First(&user).Error; err != nil {
 		return
 	}
 	return
