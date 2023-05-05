@@ -12,4 +12,5 @@ type Book struct {
 	PublicationYear string `json:"publication_year" form:"publication_year"`
 	Genre           string `json:"genre" form:"genre"`
 	BookStock       int32  `json:"book_stock" form:"book_stock"`
+	Book_Detailss   []Book_Details
 }
