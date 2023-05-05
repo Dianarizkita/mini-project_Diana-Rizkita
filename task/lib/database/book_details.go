@@ -6,7 +6,7 @@ import (
 )
 
 func CreateBookDetails(book_details *models.Book_Details) error {
-	if err := config.DB.Save(book_details).Error; err != nil {
+	if err := config.DB.Create(book_details).Error; err != nil {
 		return err
 	}
 	return nil
