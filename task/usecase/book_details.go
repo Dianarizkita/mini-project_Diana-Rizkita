@@ -15,7 +15,7 @@ func CreateBookDetails(book_details *models.Book_Details) error {
 
 	//check status
 	if book_details.Status == "" {
-		return errors.New("Status cannot be empty")
+		return errors.New("status cannot be empty")
 	}
 
 	err := database.CreateBookDetails(book_details)
