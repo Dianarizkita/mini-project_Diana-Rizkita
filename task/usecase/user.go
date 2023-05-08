@@ -4,8 +4,26 @@ import (
 	"errors"
 	"fmt"
 	"task/lib/database"
+	"task/middleware"
 	"task/models"
 )
+
+func LoginUser(user *models.User) (err error) {
+	// check to db email and password
+	err = database.LoginUser(user)
+	if err != nil {
+		fmt.Println("GetUser: Error getting user from database")
+		return
+	}
+	// generate jwt
+	token, err := middleware.CreateToken(int(user.ID))
+	if err != nil {
+		fmt.Println("GetUser: Error Generate token")
+		return
+	}
+	user.Token = token
+	return
+}
 
 func CreateUser(user *models.User) error {
 	// check name cannot be empty
