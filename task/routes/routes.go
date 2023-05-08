@@ -32,10 +32,27 @@ func New() *echo.Echo {
 	//route book details
 	book_details := e.Group("/book_details")
 	book_details.GET("", controllers.GetBookDetailsControllers)
+	book_details.GET("all", controllers.GetBookDet)
 	book_details.POST("", controllers.CreateBookDetailsController)
 	book_details.GET(":id", controllers.GetBookDetailsController)
 	book_details.PUT(":id", controllers.UpdateBookDetailsController)
 	book_details.DELETE(":id", controllers.DeleteBookDetailsController)
+
+	//route transaction
+	transaction := e.Group("/transactions")
+	transaction.GET("", controllers.GetTransactionControllers)
+	transaction.POST("", controllers.CreateTransactionController)
+	transaction.GET(":id", controllers.GetTransactionController)
+	transaction.PUT(":id", controllers.UpdateTransactionController)
+	transaction.DELETE(":id", controllers.DeleteTransactionController)
+
+	//route user
+	user := e.Group("/users")
+	user.GET("", controllers.GetUserControllers)
+	user.POST("", controllers.CreateUserController)
+	user.GET(":id", controllers.GetUserController)
+	user.PUT(":id", controllers.UpdateUserController)
+	user.DELETE(":id", controllers.DeleteUserController)
 
 	return e
 }
