@@ -22,6 +22,24 @@ func GetBookDetailsControllers(c echo.Context) error {
 	})
 }
 
+//====
+
+func GetBookDet(c echo.Context) error {
+	id, _ := strconv.ParseUint(c.Param("id"), 10, 32)
+	book_details, err := database.ShowBook(uint(id))
+
+	if err != nil {
+		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
+	}
+	return c.JSON(http.StatusOK, map[string]interface{}{
+		"message":       "succes",
+		"books_details": book_details,
+	})
+
+}
+
+//===
+
 func GetBookDetailsController(c echo.Context) error {
 	id, _ := strconv.ParseUint(c.Param("id"), 10, 32)
 	book_details, err := database.GetBookDetails(uint(id))
