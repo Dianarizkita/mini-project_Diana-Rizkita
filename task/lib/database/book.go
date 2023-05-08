@@ -15,7 +15,7 @@ func CreateBook(book *models.Book) error {
 func GetBooks() (interface{}, error) {
 	var books []models.Book
 
-	if err := config.DB.Model(&models.Book{}).Preload("Book_Detailss").Find(&books).Error; err != nil {
+	if err := config.DB.Model(&models.Book{}).Preload("Book_Detailss").Preload("Transactions").Find(&books).Error; err != nil {
 		return nil, err
 	}
 	return books, nil
@@ -23,7 +23,7 @@ func GetBooks() (interface{}, error) {
 
 func GetBook(id uint) (book models.Book, err error) {
 	book.ID = id
-	if err = config.DB.Model(&models.Book{}).Preload("Book_Detailss").First(&book).Error; err != nil {
+	if err = config.DB.Model(&models.Book{}).Preload("Book_Detailss").Preload("Transactions").First(&book).Error; err != nil {
 		return
 	}
 	return
