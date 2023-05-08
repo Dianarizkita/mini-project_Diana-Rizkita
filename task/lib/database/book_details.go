@@ -12,10 +12,22 @@ func CreateBookDetails(book_details *models.Book_Details) error {
 	return nil
 }
 
+//==============================
+
+func ShowBook(id uint) (book_details models.Book_Details, err error) {
+	book_details.ID = id
+
+	if err = config.DB.Where("status = ? ", "tersedia").Find(&book_details).Error; err != nil {
+		return
+	}
+	return book_details, nil
+}
+
+// =================================
 func GetBooksDetails() (interface{}, error) {
 	var books_details []models.Book_Details
 
-	if err := config.DB.Find(&books_details).Error; err != nil {
+	if err := config.DB.Model(&models.Book{}).Preload("Transactions").Find(&books_details).Error; err != nil {
 		return nil, err
 	}
 	return books_details, nil
@@ -23,7 +35,7 @@ func GetBooksDetails() (interface{}, error) {
 
 func GetBookDetails(id uint) (book_details models.Book_Details, err error) {
 	book_details.ID = id
-	if err = config.DB.First(&book_details).Error; err != nil {
+	if err = config.DB.Model(&models.Book{}).Preload("Transactions").First(&book_details).Error; err != nil {
 		return
 	}
 	return
