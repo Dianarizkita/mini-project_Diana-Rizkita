@@ -12,5 +12,6 @@ type User struct {
 	Alamat       string `json:"alamat" form:"alamat"`
 	Email        string `json:"email" form:"email"`
 	Password     string `json:"password" form:"password"`
+	Token        string `gorm:"-"`
 	Transactions []Transaction
 }
