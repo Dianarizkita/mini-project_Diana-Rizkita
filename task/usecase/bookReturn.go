@@ -1,23 +1,12 @@
 package usecase
 
 import (
-	"errors"
 	"fmt"
 	"task/lib/database"
 	"task/models"
 )
 
 func CreateBookReturn(book_return *models.Book_Return) error {
-	// check title cannot be empty
-	if book_return.DateOfReturn == "" {
-		return errors.New("date of return cannot be empty")
-	}
-
-	//check creator
-	if book_return.Penalty == "" {
-		return errors.New("penalty cannot be empty")
-	}
-
 	err := database.CreateBookReturn(book_return)
 	if err != nil {
 		return err
@@ -61,5 +50,29 @@ func DeleteBookReturn(id uint) (err error) {
 		return
 	}
 
+	return
+}
+
+//=============
+
+func ReturnBook(TransactionID, Buku_DetailsID uint) (book_return *models.Book_Return, err error) {
+	// Find the book in our library
+	transaction, err := database.GetTransaction(TransactionID)
+	if err != nil {
+		return nil, err
+	}
+	buku_details, err := database.GetBookDetails(Buku_DetailsID)
+	if err != nil {
+		return nil, err
+	}
+
+	// Check if the book is available
+	//if transaction.Status != "tidak tersedia" {
+	////    return nil, errors.New("transaksi is not available")
+	//}
+
+	// Update the book's status
+	transaction.Status = "Tersedia"
+	buku_details.Status = "Tersedia"
 	return
 }
