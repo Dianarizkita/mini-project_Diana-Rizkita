@@ -1,7 +1,6 @@
 package usecase
 
 import (
-	"errors"
 	"fmt"
 	"task/lib/database"
 	"task/models"
@@ -9,14 +8,14 @@ import (
 
 func CreateBookReturn(book_return *models.Book_Return) error {
 	// check title cannot be empty
-	if book_return.DateOfReturn == "" {
-		return errors.New("date of return cannot be empty")
-	}
+	//if book_return.DateOfReturn == "" {
+	//	return errors.New("date of return cannot be empty")
+	//}
 
 	//check creator
-	if book_return.Penalty == "" {
-		return errors.New("penalty cannot be empty")
-	}
+	//if book_return.Penalty == "" {
+	//	return errors.New("penalty cannot be empty")
+	//}
 
 	err := database.CreateBookReturn(book_return)
 	if err != nil {
