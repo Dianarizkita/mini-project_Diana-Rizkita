@@ -1,0 +1,564 @@
+{
+	"info": {
+		"_postman_id": "91289ca3-68d0-4f99-8090-3da3062bb350",
+		"name": "Mini_Project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26561078"
+	},
+	"item": [
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Mengelola Buku",
+					"item": [
+						{
+							"name": "Tambah Buku",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"Sagaragas\",\r\n    \"author\": \"tereliye\",\r\n    \"publisher\": \"gramedia\",\r\n    \"publication_year\": \"2003\",\r\n    \"genre\": \"fiksi\",\r\n    \"book_stock\": \"7\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8000/books",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"books"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Edit Buku",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"Bumi\",\r\n    \"creator\": \"tereliye\",\r\n    \"publisher\": \"2018\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8000/books/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"books",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Hapus Buku",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8000/books/2",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"books",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Melihat Buku",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8000/books",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"books"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Mengelola Peminjaman",
+					"item": [
+						{
+							"name": "Tambah peminjaman",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user_id\": 1,\r\n    \"book_details_id\": 5,\r\n    \"borrow_date\": \"08/05/2023\",\r\n    \"return_date\": \"18/05/2023\",\r\n    \"status\": \"Dipinjam\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8000/transactions",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"transactions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Edit peminjaman",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user_id\": 1,\r\n    \"book_details_id\": 5,\r\n    \"borrow_date\": \"08/05/2023\",\r\n    \"return_date\": \"18/05/2023\",\r\n    \"status\": \"Dipinjam\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8000/books/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"books",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Hapus Peminjaman",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8000/transactions/2",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"transactions",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Melihat Peminjaman",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8000/transactions",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"transactions"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Mengelola Buku Details",
+					"item": [
+						{
+							"name": "Tambah Buku Detail",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"book_id\": 6,\r\n    \"book_code\": \"604\",\r\n    \"status\": \"tersedia\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8000/book_details",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"book_details"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Edit Buku Detail",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"book_id\": 1,\r\n    \"book_code\": \"101\",\r\n    \"status\": \"tersedia\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8000/book_details/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"book_details",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Hapus Buku Details",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8000/book_details/2",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"book_details",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Melihat buku details",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "localhost:8000/book_details",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"book_details"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Mengelola User",
+					"item": [
+						{
+							"name": "Melihat user by id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8000/users/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"users",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tambah User",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Muda\",\r\n    \"gender\": \"L\",\r\n    \"telp\": \"085534782244\",\r\n    \"alamat\": \"medan\",\r\n    \"email\": \"muda@gmail.com\",\r\n    \"password\": \"muda123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8000/users",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Edit User",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Aji\",\r\n    \"email\": \"aji@gmail.com\",\r\n    \"password\": \"165711\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8000/users/3",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"users",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Hapus User",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8000/users/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"users",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Melihat User",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8000/users",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"users"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Mengelola Pengembalian",
+					"item": [
+						{
+							"name": "Tambah Pengembalian",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Muda\",\r\n    \"gender\": \"L\",\r\n    \"telp\": \"085534782244\",\r\n    \"alamat\": \"medan\",\r\n    \"email\": \"muda@gmail.com\",\r\n    \"password\": \"muda123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8000/book_return",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"book_return"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Melihat Data Pengembalian",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8000/book_return",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"book_return"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Tambah Pengembalian",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"transaction_id\": 5,\r\n    \"date_of_return\": \"10/05/2023\",\r\n    \"penalty\": \"-\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/book_return",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"book_return"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Tambah peminjaman",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\": 2,\r\n    \"book_details_id\": 4,\r\n    \"borrow_date\": \"08/05/2023\",\r\n    \"return_date\": \"18/05/2023\",\r\n    \"status\": \"Dipinjam\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/transactions",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"transactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Melihat Buku",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/books",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
