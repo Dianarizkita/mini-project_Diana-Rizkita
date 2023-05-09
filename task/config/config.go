@@ -48,5 +48,5 @@ func InitDB() {
 }
 
 func InitMigrate() {
-	DB.AutoMigrate(&models.Book{}, &models.Book_Details{})
+	DB.AutoMigrate(&models.Book{}, &models.Book_Details{}, &models.User{}, models.Transaction{}, &models.Book_Return{})
 }
