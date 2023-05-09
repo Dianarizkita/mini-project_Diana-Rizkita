@@ -6,7 +6,10 @@ import (
 
 type Transaction struct {
 	gorm.Model
-	LoanDate     string `json:"loan_date" form:"loan_date"`
-	DateOfReturn string `json:"date_of_return" form:"date_of_return"`
-	Status       string `json:"status" form:"status"`
+	UserID         uint   `json:"user_id" form:"user_id"`
+	Book_DetailsID uint   `json:"book_details_id" form:"book_detail_id"`
+	BorrowDate     string `json:"borrow_date" form:"borrow_date"`
+	ReturnDate     string `json:"return_date" form:"return_date"`
+	Status         string `json:"status" form:"status"`
+	Book_Returns   []Book_Return
 }
