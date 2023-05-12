@@ -19,7 +19,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"title\": \"Sagaragas\",\r\n    \"author\": \"tereliye\",\r\n    \"publisher\": \"gramedia\",\r\n    \"publication_year\": \"2003\",\r\n    \"genre\": \"fiksi\",\r\n    \"book_stock\": \"7\"\r\n}",
+									"raw": "{\r\n    \"title\": \"hujan\",\r\n    \"author\": \"tereliye\",\r\n    \"publisher\": \"gramedia\",\r\n    \"publication_year\": \"2003\",\r\n    \"genre\": \"fiksi\",\r\n    \"book_stock\": \"7\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -46,7 +46,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"title\": \"Bumi\",\r\n    \"creator\": \"tereliye\",\r\n    \"publisher\": \"2018\"\r\n}",
+									"raw": "{\r\n    \"title\": \"bumi\",\r\n    \"author\": \"tereliye\",\r\n    \"publisher\": \"yudistira\",\r\n    \"publication_year\": \"2003\",\r\n    \"genre\": \"fiksi\",\r\n    \"book_stock\": \"7\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -73,14 +73,14 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "localhost:8000/books/2",
+									"raw": "localhost:8000/books/5",
 									"host": [
 										"localhost"
 									],
 									"port": "8000",
 									"path": [
 										"books",
-										"2"
+										"5"
 									]
 								}
 							},
@@ -240,7 +240,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"book_id\": 1,\r\n    \"book_code\": \"101\",\r\n    \"status\": \"tersedia\"\r\n}",
+									"raw": "{\r\n    \"book_id\": 1,\r\n    \"book_code\": \"101\",\r\n    \"status\": \"tidak tersedia\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -493,7 +493,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"transaction_id\": 5,\r\n    \"date_of_return\": \"10/05/2023\",\r\n    \"penalty\": \"-\"\r\n}",
+							"raw": "{\r\n    \"transaction_id\": 3,\r\n    \"date_of_return\": \"10/05/2023\",\r\n    \"penalty\": \"-\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -520,7 +520,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"user_id\": 2,\r\n    \"book_details_id\": 4,\r\n    \"borrow_date\": \"08/05/2023\",\r\n    \"return_date\": \"18/05/2023\",\r\n    \"status\": \"Dipinjam\"\r\n}",
+							"raw": "{\r\n    \"user_id\": 3,\r\n    \"book_details_id\": 3,\r\n    \"borrow_date\": \"08/05/2023\",\r\n    \"return_date\": \"18/05/2023\",\r\n    \"status\": \"Dipinjam\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -559,6 +559,33 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"muda@gmail.com\",\r\n    \"password\": \"muda123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
