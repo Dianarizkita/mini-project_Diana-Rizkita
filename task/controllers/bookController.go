@@ -3,7 +3,6 @@ package controllers
 import (
 	"net/http"
 	"strconv"
-	"task/lib/database"
 	"task/models"
 	"task/usecase"
 
@@ -11,7 +10,7 @@ import (
 )
 
 func GetBookControllers(c echo.Context) error {
-	books, e := database.GetBooks()
+	books, e := usecase.GetListBooks()
 
 	if e != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, e.Error())
@@ -24,7 +23,7 @@ func GetBookControllers(c echo.Context) error {
 
 func GetBookController(c echo.Context) error {
 	id, _ := strconv.ParseUint(c.Param("id"), 10, 32)
-	book, err := database.GetBook(uint(id))
+	book, err := usecase.GetBook(uint(id))
 
 	if err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
@@ -70,7 +69,7 @@ func DeleteBookController(c echo.Context) error {
 func UpdateBookController(c echo.Context) error {
 	id, _ := strconv.Atoi(c.Param("id"))
 
-	book, err := database.GetBook(uint(id))
+	book, err := usecase.GetBook(uint(id))
 	if err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
@@ -79,9 +78,9 @@ func UpdateBookController(c echo.Context) error {
 
 	if err := usecase.UpdateBook(&book); err != nil {
 		return c.JSON(http.StatusBadRequest, map[string]interface{}{
-			"message":          "Error Create buku",
+			"message":          "Error Create book details",
 			"errorDescription": err,
-			"errorMessage":     "Mohon maaf buku tidak dapat diubah",
+			"errorMessage":     "Mohon maaf detail buku tidak dapat diubah",
 		})
 	}
 
