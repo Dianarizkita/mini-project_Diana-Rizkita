@@ -53,6 +53,7 @@ func GetUser(id uint) (user models.User, err error) {
 }
 
 func GetListUsers() (users []models.User, err error) {
+	users, err = database.GetUsers()
 	if err != nil {
 		fmt.Println("GetListUser : Error getting user from database")
 		return
