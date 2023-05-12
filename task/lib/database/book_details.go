@@ -12,8 +12,7 @@ func CreateBookDetails(book_details *models.Book_Details) error {
 	return nil
 }
 
-func GetBooksDetails() (interface{}, error) {
-	var books_details []models.Book_Details
+func GetBooksDetails() (books_details []models.Book_Details, err error) {
 
 	if err := config.DB.Model(&models.Book_Details{}).Preload("Transactions").Find(&books_details).Error; err != nil {
 		return nil, err
