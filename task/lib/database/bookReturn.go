@@ -12,13 +12,11 @@ func CreateBookReturn(book_return *models.Book_Return) error {
 	return nil
 }
 
-func GetBookReturns() (interface{}, error) {
-	var book_returns []models.Book_Return
-
-	if err := config.DB.Find(&book_returns).Error; err != nil {
-		return nil, err
+func GetBooksReturn() (books_return []models.Book_Return, err error) {
+	if err = config.DB.Find(&books_return).Error; err != nil {
+		return
 	}
-	return book_returns, nil
+	return
 }
 
 func GetBookReturn(id uint) (book_return models.Book_Return, err error) {
