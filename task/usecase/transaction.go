@@ -34,6 +34,7 @@ func GetTransaction(id uint) (transaction models.Transaction, err error) {
 }
 
 func GetListTransactions() (transactions []models.Transaction, err error) {
+	transactions, err = database.GetTransactions()
 	if err != nil {
 		fmt.Println("GetListTransaction : Error getting transaction from database")
 		return
