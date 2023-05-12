@@ -2,10 +2,12 @@ package routes
 
 import (
 	"net/http"
+	"task/constants"
 	"task/controllers"
 
 	"github.com/go-playground/validator"
 	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 )
 
 type CustomValidator struct {
@@ -20,9 +22,15 @@ func (cv *CustomValidator) Validate(i interface{}) error {
 }
 
 func New() *echo.Echo {
+
 	e := echo.New()
+
+	e.Validator = &CustomValidator{validator: validator.New()}
+
+	e.POST("/login", controllers.LoginUserController)
+
 	//routes Book
-	book := e.Group("/books")
+	book := e.Group("/books", middleware.JWT([]byte(constants.SECRET_JWT)))
 	book.GET("", controllers.GetBookControllers)
 	book.POST("", controllers.CreateBookController)
 	book.GET(":id", controllers.GetBookController)
@@ -37,7 +45,7 @@ func New() *echo.Echo {
 	book_details.PUT(":id", controllers.UpdateBookDetailsController)
 	book_details.DELETE(":id", controllers.DeleteBookDetailsController)
 
-	//route book details
+	//route book returns
 	book_return := e.Group("/book_return")
 	book_return.GET("", controllers.GetReturnControllers)
 	book_return.POST("", controllers.CreateReturnController)
