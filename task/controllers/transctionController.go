@@ -3,7 +3,6 @@ package controllers
 import (
 	"net/http"
 	"strconv"
-	"task/lib/database"
 	"task/models"
 	"task/usecase"
 
@@ -11,20 +10,20 @@ import (
 )
 
 func GetTransactionControllers(c echo.Context) error {
-	transactions, e := database.GetTransactions()
+	transactions, e := usecase.GetListTransactions()
 
 	if e != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, e.Error())
 	}
 	return c.JSON(http.StatusOK, map[string]interface{}{
-		"message":      "success get all books",
+		"message":      "success get all transactions",
 		"transactions": transactions,
 	})
 }
 
 func GetTransactionController(c echo.Context) error {
 	id, _ := strconv.ParseUint(c.Param("id"), 10, 32)
-	transaction, err := database.GetTransaction(uint(id))
+	transaction, err := usecase.GetTransaction(uint(id))
 
 	if err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
