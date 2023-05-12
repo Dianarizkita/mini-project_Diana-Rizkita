@@ -12,13 +12,11 @@ func CreateUser(user *models.User) error {
 	return nil
 }
 
-func GetUsers() (interface{}, error) {
-	var users []models.User
-
-	if err := config.DB.Model(&models.User{}).Preload("Transactions").Find(&users).Error; err != nil {
-		return nil, err
+func GetUsers() (users []models.User, err error) {
+	if err = config.DB.Model(&models.User{}).Preload("Transactions").Find(&users).Error; err != nil {
+		return
 	}
-	return users, nil
+	return
 }
 
 func GetUser(id uint) (user models.User, err error) {
