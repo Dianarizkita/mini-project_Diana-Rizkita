@@ -1,7 +1,7 @@
 package middleware
 
 import (
-	"task/constant"
+	constant "task/constants"
 	"time"
 
 	jwt "github.com/dgrijalva/jwt-go"
