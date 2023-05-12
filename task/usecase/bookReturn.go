@@ -33,9 +33,10 @@ func GetBookReturn(id uint) (book_return models.Book_Return, err error) {
 	return
 }
 
-func GetListBookReturns() (book_returns []models.Book_Return, err error) {
+func GetListBooksReturn() (books_return []models.Book_Return, err error) {
+	books_return, err = database.GetBooksReturn()
 	if err != nil {
-		fmt.Println("GetListBookReturn : Error getting book return from database")
+		fmt.Println("GetListBookReturn : Error getting book returjn from database")
 		return
 	}
 	return
