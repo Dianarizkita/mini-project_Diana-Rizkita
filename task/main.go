@@ -2,14 +2,14 @@ package main
 
 import (
 	"task/config"
-	//m "task/middlewares"
+	m "task/middleware"
 	"task/routes"
 )
 
 func main() {
 	config.InitDB()
 	e := routes.New()
-	//m.LogMiddlewares(e)
+	m.Logmiddleware(e)
 
 	e.Logger.Fatal(e.Start(":8000"))
 }
