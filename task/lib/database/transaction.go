@@ -12,13 +12,11 @@ func CreateTransaction(transaction *models.Transaction) error {
 	return nil
 }
 
-func GetTransactions() (interface{}, error) {
-	var transactions []models.Transaction
-
-	if err := config.DB.Model(&models.Transaction{}).Preload("Book_Returns").Find(&transactions).Error; err != nil {
-		return nil, err
+func GetTransactions() (transactions []models.Transaction, err error) {
+	if err = config.DB.Model(&models.Transaction{}).Preload("Book_Returns").Find(&transactions).Error; err != nil {
+		return
 	}
-	return transactions, nil
+	return
 }
 
 func GetTransaction(id uint) (transaction models.Transaction, err error) {
