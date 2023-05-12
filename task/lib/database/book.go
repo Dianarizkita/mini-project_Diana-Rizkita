@@ -12,13 +12,11 @@ func CreateBook(book *models.Book) error {
 	return nil
 }
 
-func GetBooks() (interface{}, error) {
-	var books []models.Book
-
-	if err := config.DB.Model(&models.Book{}).Preload("Book_Detailss").Find(&books).Error; err != nil {
-		return nil, err
+func GetBooks() (books []models.Book, err error) {
+	if err = config.DB.Model(&models.Book{}).Preload("Book_Detailss").Find(&books).Error; err != nil {
+		return
 	}
-	return books, nil
+	return
 }
 
 func GetBook(id uint) (book models.Book, err error) {
