@@ -3,7 +3,6 @@ package controllers
 import (
 	"net/http"
 	"strconv"
-	"task/lib/database"
 	"task/models"
 	"task/usecase"
 
@@ -11,7 +10,7 @@ import (
 )
 
 func GetUserControllers(c echo.Context) error {
-	users, e := database.GetUsers()
+	users, e := usecase.GetListUsers()
 
 	if e != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, e.Error())
@@ -24,7 +23,7 @@ func GetUserControllers(c echo.Context) error {
 
 func GetUserController(c echo.Context) error {
 	id, _ := strconv.ParseUint(c.Param("id"), 10, 32)
-	user, err := database.GetUser(uint(id))
+	user, err := usecase.GetUser(uint(id))
 
 	if err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
@@ -72,7 +71,7 @@ func UpdateUserController(c echo.Context) error {
 	id, _ := strconv.Atoi(c.Param("id"))
 
 	//id, _ := strconv.ParseUint(c.Param("id"), 10, 32)
-	user, err := database.GetUser(uint(id))
+	user, err := usecase.GetUser(uint(id))
 	//user := models.User{}
 	if err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
