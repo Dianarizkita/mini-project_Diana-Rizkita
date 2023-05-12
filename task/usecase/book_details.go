@@ -35,6 +35,7 @@ func GetBookDetails(id uint) (book_details models.Book_Details, err error) {
 }
 
 func GetListBooksDetails() (books_details []models.Book_Details, err error) {
+	books_details, err = database.GetBooksDetails()
 	if err != nil {
 		fmt.Println("GetListBook : Error getting user from database")
 		return
