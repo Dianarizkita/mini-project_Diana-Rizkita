@@ -2,12 +2,10 @@ package routes
 
 import (
 	"net/http"
-	"task/constants"
 	"task/controllers"
 
 	"github.com/go-playground/validator"
 	"github.com/labstack/echo/v4"
-	"github.com/labstack/echo/v4/middleware"
 )
 
 type CustomValidator struct {
@@ -30,7 +28,7 @@ func New() *echo.Echo {
 	e.POST("/login", controllers.LoginUserController)
 
 	//routes Book
-	book := e.Group("/books", middleware.JWT([]byte(constants.SECRET_JWT)))
+	book := e.Group("/books")
 	book.GET("", controllers.GetBookControllers)
 	book.POST("", controllers.CreateBookController)
 	book.GET(":id", controllers.GetBookController)
